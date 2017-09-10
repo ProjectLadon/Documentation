@@ -22,3 +22,11 @@ sudo apt-get update
 sudo apt-get upgrade
 ```
 * Install robotics package
+```
+sudo apt-get install roboticscape
+```
+* Install gpsd and other important software
+```
+sudo apt-get install samba gpsd gpsd-clients
+```
+
