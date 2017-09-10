@@ -8,6 +8,7 @@ These instructions are for setting a new Beaglebone Blue for Ladon Project devel
 * Type the following lines:
 
 '''
+
 connmanctl
 connmanctl> tether wifi off
 connmanctl> enable wifi
@@ -16,6 +17,7 @@ connmanctl> services
 connmanctl> agent on
 connmanctl> connect wifi_*_managed_psk
 connmanctl> quit
+
 '''
 
 * Update everything 
