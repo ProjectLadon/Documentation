@@ -6,6 +6,7 @@ These instructions are for setting a new Beaglebone Blue for Ladon Project devel
 * Connect and log in to the new board
 * Edit /etc/network/interfaces and uncomment the connmanctl lines
 * Type the following lines:
+
 '''
 connmanctl
 connmanctl> tether wifi off
@@ -16,8 +17,12 @@ connmanctl> agent on
 connmanctl> connect wifi_*_managed_psk
 connmanctl> quit
 '''
+
 * Update everything 
+
 '''
 sudo apt-get update
+sudo apt-get upgrade
 '''
+
 * Install robotics package
