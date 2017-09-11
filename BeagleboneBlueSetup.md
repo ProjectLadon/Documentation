@@ -27,6 +27,17 @@ sudo apt-get install roboticscape
 ```
 * Install gpsd and other important software
 ```
-sudo apt-get install samba gpsd gpsd-clients
+sudo apt-get install samba gpsd gpsd-clients python3 python3-pip
 ```
 
+# SAMBA Setup
+
+* Edit /etc/samba/smb.conf and set ```read only = no``` in the ```[homes]``` section
+* Set the samba password for the default account
+```
+sudo smbpasswd -a debian
+```
+* Restart the samba server
+```
+sudo /etc/init.d/samba restart
+```
