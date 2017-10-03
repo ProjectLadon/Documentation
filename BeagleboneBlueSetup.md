@@ -86,3 +86,9 @@ cd moos-ivp
 ```
 export LIBGL_ALWAYS_INDIRECT=1
 ```
+
+# Setting up GPSd
+
+* Assuming you are using the standard Beaglebone Blue GPS port, add the entry ```/dev/ttyO2``` to the DEVICES list.
+* Another entry will be added in the future for AIS
+* Reboot the beaglebone or restart the gpsd process to pick up the change
