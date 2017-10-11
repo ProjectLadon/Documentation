@@ -47,13 +47,13 @@ sudo apt-get install roboticscape
 ```
 * Install gpsd and other important software
 ```
-sudo apt-get install -y samba gpsd gpsd-clients cmake geographiclib-tools
+sudo apt-get install -y samba gpsd gpsd-clients cmake geographiclib-tools libgps-dev
 sudo apt-get install -y python3 python3-pip python3-geographiclib
-sudo apt-get install -y libboost-all-dev
+sudo apt-get install -y libboost-all-dev gdb
 ```
 * If you are planning to install MOOS, install these as well:
 ```
-sudo apt-get install subversion xterm libfltk1.3-dev freeglut3-dev libpng-dev libjpeg-dev libxft-dev libxinerama-dev fluid libtiff5-dev libproj-dev
+sudo apt-get install subversion xterm libfltk1.3-dev freeglut3-dev libpng-dev libjpeg-dev libxft-dev libxinerama-dev fluid libtiff5-dev libproj-dev 
 ```
 
 # SAMBA Setup
@@ -66,6 +66,22 @@ sudo smbpasswd -a debian
 * Restart the samba server
 ```
 sudo /etc/init.d/samba restart
+```
+
+# Manual Library Installation
+
+* Install rapidjson package
+```
+git clone https://github.com/Tencent/rapidjson.git
+cd rapidjson
+cmake .
+make; sudo make install
+```
+* Install date package
+```
+git clone https://github.com/HowardHinnant/date.git
+cd date/include
+sudo cp -R date /usr/include
 ```
 
 # Installing & Building MOOS-IvP
