@@ -53,7 +53,7 @@ sudo apt-get install -y libboost-all-dev gdb
 ```
 * If you are planning to install MOOS, install these as well:
 ```
-sudo apt-get install subversion xterm libfltk1.3-dev freeglut3-dev libpng-dev libjpeg-dev libxft-dev libxinerama-dev fluid libtiff5-dev libproj-dev 
+sudo apt-get install -y subversion xterm libfltk1.3-dev freeglut3-dev libpng-dev libjpeg-dev libxft-dev libxinerama-dev fluid libtiff5-dev libproj-dev 
 ```
 
 # SAMBA Setup
