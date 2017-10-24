@@ -48,8 +48,8 @@ sudo apt-get install roboticscape
 * Install gpsd and other important software
 ```
 sudo apt-get install -y samba gpsd gpsd-clients cmake geographiclib-tools libgps-dev
-sudo apt-get install -y python3 python3-pip python3-geographiclib
-sudo apt-get install -y libboost-all-dev gdb
+sudo apt-get install -y python3 python3-pip python3-geographiclib man-db
+sudo apt-get install -y libboost-all-dev gdb libgeographic-dev
 ```
 * If you are planning to install MOOS, install these as well:
 ```
@@ -108,3 +108,10 @@ export LIBGL_ALWAYS_INDIRECT=1
 * Assuming you are using the standard Beaglebone Blue GPS port, add the entry ```/dev/ttyO2``` to the DEVICES list.
 * Another entry will be added in the future for AIS
 * Reboot the beaglebone or restart the gpsd process to pick up the change
+
+# Installing magnetic model
+
+* Use the helper script to fetch and install the magnetic models
+```
+geographiclib-get-magnetic all
+```
