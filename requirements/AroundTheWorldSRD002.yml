@@ -4,9 +4,8 @@ level: 1.1
 links: []
 normative: true
 ref: ''
-reviewed: null
+reviewed: e653b9630dc7c50c350c5e29d4494d85
 text: |
-    
-    The gross dimensions of the boat shall be as follows:
-    | Length | 4.2m |
-    | Displacement | 350 kg | 
+  The gross dimensions of the boat shall be as follows:
+  | Length | 4.2m |
+  | Displacement | 350 kg |

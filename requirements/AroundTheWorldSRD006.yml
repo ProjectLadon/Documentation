@@ -4,6 +4,6 @@ level: 4.1.1
 links: []
 normative: true
 ref: ''
-reviewed: null
+reviewed: 3cd032b183e82da3d78ed4911b3b4a0b
 text: |
-    The main computer shall run the latest stable version of Debian Linux. 
+  The main computer shall run the latest stable version of Debian Linux.
