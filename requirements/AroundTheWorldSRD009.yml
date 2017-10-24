@@ -1,0 +1,33 @@
+active: true
+derived: false
+level: 4.1.2
+links: []
+normative: true
+ref: ''
+reviewed: null
+text: |
+    The following Debian packages **shall** be installed
+    * roboticscape
+    * samba 
+    * gpsd 
+    * gpsd-clients 
+    * cmake 
+    * geographiclib-tools 
+    * libgps-dev
+    * python3 python3-pip 
+    * python3-geographiclib 
+    * man-db
+    * libboost-all-dev 
+    * gdb 
+    * libgeographic-dev
+    * subversion 
+    * xterm 
+    * libfltk1.3-dev 
+    * freeglut3-dev 
+    * libpng-dev 
+    * libjpeg-dev 
+    * libxft-dev 
+    * libxinerama-dev 
+    * fluid 
+    * libtiff5-dev 
+    * libproj-dev 

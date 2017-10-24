@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 4.1.1
+links: []
+normative: true
+ref: ''
+reviewed: null
+text: |
+    The main computer shall run the latest stable version of Debian Linux. 
