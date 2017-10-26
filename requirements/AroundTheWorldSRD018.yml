@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 3.1.5
+links: []
+normative: true
+ref: ''
+reviewed: null
+text: |
+  The main control box **shall** contain an R/C receiver for manual override. This receiver may be either a DMX or SBUS output type.

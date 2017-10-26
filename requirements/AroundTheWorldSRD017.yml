@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 3.1.4
+links: []
+normative: true
+ref: ''
+reviewed: null
+text: |
+  The main control box **shall** contain an AIS receiver, such as the dAISy, with serial output.

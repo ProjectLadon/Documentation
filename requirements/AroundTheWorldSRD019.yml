@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 3.1.5.1
+links: []
+normative: true
+ref: ''
+reviewed: null
+text: |
+  The power supply to this device **shall** be controllable by software running on the Beaglebone Blue.

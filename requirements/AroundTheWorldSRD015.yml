@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 3.1.2
+links: []
+normative: true
+ref: ''
+reviewed: null
+text: |
+  The main control box **shall** contain the router for the onboard WiFi network. This router **may** be the ship to shore communications device as well. For example, a cellular or satellite mobile hotspot may be an acceptable router.
