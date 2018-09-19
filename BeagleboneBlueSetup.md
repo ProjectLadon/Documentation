@@ -20,6 +20,7 @@ connmanctl> quit
 ```
 sudo apt-get update
 sudo apt-get upgrade
+sudo apt-get dist-upgrade
 ```
 
 # Expand partition to fill SD card
@@ -105,7 +106,7 @@ export LIBGL_ALWAYS_INDIRECT=1
 
 # Setting up GPSd
 
-* Assuming you are using the standard Beaglebone Blue GPS port, add the entry ```/dev/ttyO2``` to the DEVICES in ```/etc/default/gpsd``` list.
+* Assuming you are using the standard Beaglebone Blue GPS port, add the entry ```/dev/ttyO2``` to the DEVICES list in ```/etc/default/gpsd```.
 * Another entry will be added in the future for AIS
 * Reboot the beaglebone or restart the gpsd process to pick up the change
 
