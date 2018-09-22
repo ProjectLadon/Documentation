@@ -50,7 +50,7 @@ sudo apt-get install roboticscape
 ```
 sudo apt-get install -y samba gpsd gpsd-clients cmake geographiclib-tools libgps-dev
 sudo apt-get install -y python3 python3-pip python3-geographiclib man-db
-sudo apt-get install -y libboost-all-dev gdb libgeographic-dev
+sudo apt-get install -y libboost-all-dev gdb libgeographic-dev libvurl4-gnutls-dev
 ```
 * If you are planning to install MOOS, install these as well:
 ```
