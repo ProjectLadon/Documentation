@@ -116,3 +116,13 @@ export LIBGL_ALWAYS_INDIRECT=1
 ```
 geographiclib-get-magnetic all
 ```
+
+# Other fixes
+Some Beaglebone Blues have 'funky' bootloader setups. These may cause some peripherals, such as ADC and PRUs, not to work properly. You can check this by running:
+```
+sudo /opt/scripts/tools/version.sh
+```
+Check if there are multiple bootloader lines. If there are, run the following:
+```
+sudo dd if=/dev/zero of=/dev/mmcblk1 bs=1M count=10 
+```
