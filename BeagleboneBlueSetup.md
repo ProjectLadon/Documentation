@@ -23,6 +23,14 @@ sudo apt-get upgrade
 sudo apt-get dist-upgrade
 ```
 
+# Hardware Setup
+Open ```/boot/uEnv.txt``` with a text editor and add the following lines:
+```
+uboot_overlay_addr0=/lib/firmware/BB-UART2-00A0.dtbo
+uboot_overlay_addr1=/lib/firmware/BB-UART5-00A0.dtbo
+uboot_overlay_addr2=/lib/firmware/BB-CAN1-00A0.dtbo
+```
+
 # Expand partition to fill SD card
 
 The installed partition is only 4 GB; it needs to be expanded to fill the entire SD card before we start installed more stuff.
