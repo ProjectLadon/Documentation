@@ -3,9 +3,10 @@ These instructions are for setting a new Beaglebone Blue for Ladon Project devel
 # Initial Setup
 
 * Download and burn the latest BBBLue image using the instructions from [https://beagleboard.org/getting-started]
+  * An LXQT image (as opposed to an IoT image) enables the use of MOOS GUI applications
 * Connect and log in to the new board
 * Edit /etc/network/interfaces and uncomment the connmanctl lines
-* Type the following lines:
+* Uncomment the following lines:
 ```
 connmanctl
 connmanctl> tether wifi off
@@ -15,6 +16,14 @@ connmanctl> services
 connmanctl> agent on
 connmanctl> connect wifi_*_managed_psk
 connmanctl> quit
+```
+* Add the following lines to enable the CAN interface:
+```
+auto can0
+iface can0 inet manual
+	pre-up /sbin/ip link set $IFACE type can bitrate 500000 
+	up /sbin/ifconfig $IFACE up
+	down /sbin/ifconfig $IFACE down
 ```
 * Update everything 
 ```
@@ -28,7 +37,6 @@ Open ```/boot/uEnv.txt``` with a text editor and add the following lines:
 ```
 uboot_overlay_addr0=/lib/firmware/BB-UART2-00A0.dtbo
 uboot_overlay_addr1=/lib/firmware/BB-UART5-00A0.dtbo
-uboot_overlay_addr2=/lib/firmware/BB-CAN1-00A0.dtbo
 ```
 
 # Expand partition to fill SD card
@@ -40,6 +48,7 @@ The installed partition is only 4 GB; it needs to be expanded to fill the entire
 sudo fdisk -u /dev/mmcblk0
 ```
 * Type ```p``` to print the partition table. Note the ```Start``` point of the main partition and the number of bytes on the disk. 
+* Type ```d``` to delete the old partition
 * Type ```n``` to create a new partition starting at the same point as the original partition. Accept the default end point, which will include the whole disk.
 * Type ```w``` to write the new partition and quit.
 * Reboot to pick up new partition table
@@ -50,31 +59,11 @@ sudo resize2fs /dev/mmcblk0p1
 
 # Software Installation
 
-* Install robotics package:
-```
-sudo apt-get install roboticscape
-```
+* 
 * Install gpsd and other important software
 ```
-sudo apt-get install -y samba gpsd gpsd-clients cmake geographiclib-tools libgps-dev
-sudo apt-get install -y python3 python3-pip python3-geographiclib man-db
-sudo apt-get install -y libboost-all-dev gdb libgeographic-dev libvurl4-gnutls-dev
-```
-* If you are planning to install MOOS, install these as well:
-```
-sudo apt-get install -y subversion xterm libfltk1.3-dev freeglut3-dev libpng-dev libjpeg-dev libxft-dev libxinerama-dev fluid libtiff5-dev libproj-dev 
-```
-
-# SAMBA Setup
-
-* Edit /etc/samba/smb.conf and set ```read only = no``` in the ```[homes]``` section
-* Set the samba password for the default account
-```
-sudo smbpasswd -a debian
-```
-* Restart the samba server
-```
-sudo /etc/init.d/samba restart
+sudo apt-get install -y gpsd gpsd-clients cmake geographiclib-tools libgps-dev python3 python3-pip python3-geographiclib man-db
+sudo apt-get install -y libboost-all-dev gdb libgeographic-dev subversion xterm libfltk1.3-dev freeglut3-dev libpng-dev libjpeg-dev libxft-dev libxinerama-dev fluid libtiff5-dev libproj-dev 
 ```
 
 # Manual Library Installation
@@ -97,7 +86,7 @@ sudo cp -R date /usr/include
 
 * Fetch the latest version of MOOS-Ivp
 ```
-svn co https://oceanai.mit.edu/svn/moos-ivp-aro/releases/moos-ivp-17.7 moos-ivp
+svn co https://oceanai.mit.edu/svn/moos-ivp-aro/releases/moos-ivp-17.7.2 moos-ivp
 ```
 * Build the software
 ```
