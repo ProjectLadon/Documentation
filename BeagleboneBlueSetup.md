@@ -62,7 +62,7 @@ sudo resize2fs /dev/mmcblk0p1
 * 
 * Install gpsd and other important software
 ```
-sudo apt-get install -y gpsd gpsd-clients cmake geographiclib-tools libgps-dev python3 python3-pip python3-geographiclib libcurl4-gnutls-dev
+sudo apt-get install -y gpsd gpsd-clients cmake geographiclib-tools libgps-dev python3 python3-pip python3-geographiclib libcurl4-gnutls-dev libproj-dev
 sudo apt-get install -y libboost-all-dev gdb libgeographic-dev subversion xterm libfltk1.3-dev freeglut3-dev libpng-dev libjpeg-dev libxft-dev libxinerama-dev fluid libtiff5-dev libproj-dev 
 ```
 
