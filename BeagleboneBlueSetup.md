@@ -59,11 +59,13 @@ sudo resize2fs /dev/mmcblk0p1
 
 # Software Installation
 
-* 
 * Install gpsd and other important software
 ```
-sudo apt-get install -y gpsd gpsd-clients cmake geographiclib-tools libgps-dev python3 python3-pip python3-geographiclib libcurl4-gnutls-dev libproj-dev
-sudo apt-get install -y libboost-all-dev gdb libgeographic-dev subversion xterm libfltk1.3-dev freeglut3-dev libpng-dev libjpeg-dev libxft-dev libxinerama-dev fluid libtiff5-dev libproj-dev 
+sudo apt-get install -y gpsd gpsd-clients cmake geographiclib-tools libgps-dev python3 
+sudo apt-get install -y python3-pip python3-geographiclib libcurl4-gnutls-dev libproj-dev
+sudo apt-get install -y libboost-all-dev gdb libgeographic-dev subversion xterm 
+sudo apt-get install -y libfltk1.3-dev freeglut3-dev libpng-dev libjpeg-dev libxft-dev 
+sudo apt-get install -y libxinerama-dev fluid libtiff5-dev 
 ```
 
 # Manual Library Installation
