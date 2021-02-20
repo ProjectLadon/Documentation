@@ -69,7 +69,7 @@ sudo apt-get install -y libfltk1.3-dev freeglut3-dev libpng-dev libjpeg-dev libx
 sudo apt-get install -y libxinerama-dev fluid libtiff5-dev librobotcontrol
 ```
 # ROS Installation
-ROS Noetic, full desktop installation (http://wiki.ros.org/noetic/Installation/Debian)
+Follow the source installation instructions for ROS Noetic (http://wiki.ros.org/noetic/Installation/Source)
 
 Create workspace in ~/catkin_ws with the following instructions, after the installation of ROS:
 - ``mkdir -p ~/catkin_ws/src``
