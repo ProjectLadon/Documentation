@@ -69,52 +69,27 @@ sudo apt-get install -y libfltk1.3-dev freeglut3-dev libpng-dev libjpeg-dev libx
 sudo apt-get install -y libxinerama-dev fluid libtiff5-dev librobotcontrol
 ```
 # ROS Installation
-ROS Noetic, full desktop installation (http://wiki.ros.org/melodic/Installation/Debian)
+ROS Noetic, full desktop installation (http://wiki.ros.org/noetic/Installation/Debian)
 
 Create workspace in ~/catkin_ws with the following instructions, after the installation of ROS:
 - ``mkdir -p ~/catkin_ws/src``
 - ``cd ~/catkin_ws``
 - ``catkin_make``
 
-# Additional ROS packages
+## Additional ROS packages
 
-Generally, you need to fetch these git repositories into your catkin_ws/src directory. Once they're all available, call ``catkin_make`` from ~/catkin_ws. Note that rosbridge isn't here -- I haven't managed to install it on the VM (mostly for lack of trying).
+Generally, you need to fetch these git repositories into your catkin_ws/src directory. Once they're all available, call ``catkin_make`` from ~/catkin_ws. 
 
-## moos-ros-bridge
-
-``git clone https://github.com/SyllogismRXS/moos-ros-bridge.git``
-
-## cmake_modules
-
-``git clone https://github.com/ros/cmake_modules.git``
-
-## class_loader
-
-``git clone https://github.com/ros/class_loader.git``
-
-## diagnostics
-
-``git clone https://github.com/ros/diagnostics.git``
-
-## filters
-
-``git clone https://github.com/ros/filters.git``
-
-## pluginlib
-
-``https://github.com/ros/pluginlib.git``
-
-## ros_canopen
-
-``https://github.com/ros-industrial/ros_canopen.git``
-
-## ros_control
-
-``https://github.com/ros-controls/ros_control.git``
-
-## roslint
-
-``https://github.com/ros/roslint.git``
+* ``git clone https://github.com/SyllogismRXS/moos-ros-bridge.git``
+* ``git clone https://github.com/ros/cmake_modules.git``
+* ``git clone https://github.com/ros/class_loader.git``
+* ``git clone https://github.com/ros/diagnostics.git``
+* ``git clone https://github.com/ros/filters.git``
+* ``git clone https://github.com/ros/pluginlib.git``
+* ``git clone https://github.com/ros-industrial/ros_canopen.git``
+* ``git clone https://github.com/ros-controls/ros_control.git``
+* ``git clone https://github.com/ros/roslint.git``
+* ``git clone https://github.com/ros-drivers/rosserial.git``
 
 # Manual Library Installation
 
@@ -122,8 +97,7 @@ Generally, you need to fetch these git repositories into your catkin_ws/src dire
 ```
 git clone https://github.com/Tencent/rapidjson.git
 cd rapidjson
-cmake .
-make; sudo make install
+cmake . && make && sudo make install
 ```
 * Install date package
 ```
@@ -133,20 +107,33 @@ sudo cp -R date /usr/include
 ```
 * Install eigen3
 ```
+git clone https://gitlab.com/libeigen/eigen.git
+cd eigen
+mkdir build
+cd build
+cmake .. && sudo make install
 ```
 * Install autodiff
 ```
+git clone https://github.com/autodiff/autodiff
+cd autodiff
+mkdir build
+cd build
+cmake .. && make && sudo make install
 ```
 * Install nlohmann/json
 ```
+git clone https://github.com/nlohmann/json.git
+cd json/include
+sudo cp -R nlohmann /usr/include
 ```
 # Installing & Building MOOS-IvP
 
-* Fetch the latest version of MOOS-Ivp
+* Fetch the latest version of MOOS-IvP (update version number as needed)
 ```
-svn co https://oceanai.mit.edu/svn/moos-ivp-aro/releases/moos-ivp-17.7.2 moos-ivp
+svn co https://oceanai.mit.edu/svn/moos-ivp-aro/releases/moos-ivp-19.8.2 moos-ivp
 ```
-* Build the software
+* Build MOOS-IvP
 ```
 cd moos-ivp
 ./build.sh
@@ -158,8 +145,6 @@ cd moos-ivp
 ```
 export LIBGL_ALWAYS_INDIRECT=1
 ```
-# Install ROS
-
 # Setting up GPSd
 
 * Assuming you are using the standard Beaglebone Blue GPS port, add the entry ```/dev/ttyO2``` to the DEVICES list in ```/etc/default/gpsd```.
