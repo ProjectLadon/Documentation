@@ -78,7 +78,6 @@ Generally, you need to fetch these git repositories into your catkin_ws/src dire
 * ``git clone https://github.com/SyllogismRXS/moos-ros-bridge.git``
 * ``git clone https://github.com/ros-industrial/ros_canopen.git``
 * ``git clone https://github.com/ros-controls/ros_control.git``
-* ``git clone https://github.com/ros/roslint.git``
 * ``git clone https://github.com/ros-drivers/rosserial.git``
 
 After cloning these files, build them with ``./src/catkin/bin/catkin_make_isolated --install -DCMAKE_BUILD_TYPE=RelWithDebInfo -DPYTHON_EXECUTABLE=/usr/bin/python3``
