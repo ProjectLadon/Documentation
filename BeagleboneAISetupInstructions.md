@@ -57,7 +57,8 @@ sudo apt-get update
 sudo apt-get upgrade
 sudo apt-get dist-upgrade
 ```
-
+# Create Swap File
+Follow the instructions at https://paulbupejr.com/adding-swap-memory-to-the-beaglebone-black/ to add at least 1GB of swap space. This is required for building ROS. 
 # Software Installation
 * Install gpsd and other important software
 ```
