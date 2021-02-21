@@ -69,27 +69,19 @@ sudo apt-get install -y libfltk1.3-dev freeglut3-dev libpng-dev libjpeg-dev libx
 sudo apt-get install -y libxinerama-dev fluid libtiff5-dev librobotcontrol
 ```
 # ROS Installation
-Follow the source installation instructions for ROS Noetic (http://wiki.ros.org/noetic/Installation/Source)
-
-Create workspace in ~/catkin_ws with the following instructions, after the installation of ROS:
-- ``mkdir -p ~/catkin_ws/src``
-- ``cd ~/catkin_ws``
-- ``catkin_make``
+Follow the source installation instructions for ROS Noetic (http://wiki.ros.org/noetic/Installation/Source). Make sure to append ``-j 1`` to the build command. This is because the default is to use both cores to compile and that will result in the build running out of memory and crashing. Use the build workspace for the rest of your catkin workspace needs. 
 
 ## Additional ROS packages
 
 Generally, you need to fetch these git repositories into your catkin_ws/src directory. Once they're all available, call ``catkin_make`` from ~/catkin_ws. 
 
 * ``git clone https://github.com/SyllogismRXS/moos-ros-bridge.git``
-* ``git clone https://github.com/ros/cmake_modules.git``
-* ``git clone https://github.com/ros/class_loader.git``
-* ``git clone https://github.com/ros/diagnostics.git``
-* ``git clone https://github.com/ros/filters.git``
-* ``git clone https://github.com/ros/pluginlib.git``
 * ``git clone https://github.com/ros-industrial/ros_canopen.git``
 * ``git clone https://github.com/ros-controls/ros_control.git``
 * ``git clone https://github.com/ros/roslint.git``
 * ``git clone https://github.com/ros-drivers/rosserial.git``
+
+After cloning these files, build them with ``./src/catkin/bin/catkin_make_isolated --install -DCMAKE_BUILD_TYPE=RelWithDebInfo -DPYTHON_EXECUTABLE=/usr/bin/python3``
 
 # Manual Library Installation
 
