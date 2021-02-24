@@ -112,6 +112,15 @@ cd rapidxml-1.13
 sudo mkdir /usr/include/rapidxml
 sudo cp * /usr/include/rapidxml
 ```
+* Install muparser
+```
+git clone https://github.com/beltoforion/muparser.git
+cd muparser
+cmake .
+make
+sudo make install
+sudo ldconfig
+```
 # ROS Installation
 Follow the source installation instructions for ROS Noetic (http://wiki.ros.org/noetic/Installation/Source). Make sure to append ``-j 1`` to the build command. This is because the default is to use both cores to compile and that will result in the build running out of memory and crashing. Use the build workspace for the rest of your catkin workspace needs. 
 
