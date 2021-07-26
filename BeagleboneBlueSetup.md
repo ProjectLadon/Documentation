@@ -125,3 +125,6 @@ Check if there are multiple bootloader lines. If there are, run the following:
 ```
 sudo dd if=/dev/zero of=/dev/mmcblk1 bs=1M count=10 
 ```
+
+# Add swap 
+https://paulbupejr.com/adding-swap-memory-to-the-beaglebone-black/
