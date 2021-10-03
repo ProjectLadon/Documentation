@@ -37,84 +37,53 @@ Open ```/boot/uEnv.txt``` with a text editor and add the following lines:
 ```
 uboot_overlay_addr0=/lib/firmware/BB-UART2-00A0.dtbo
 uboot_overlay_addr1=/lib/firmware/BB-UART5-00A0.dtbo
+uboot_overlay_addr2=/lib/firmware/BB-UART0-00A0.dtbo
+uboot_overlay_addr3=/lib/firmware/BB-UART1-00A0.dtbo
+uboot_overlay_addr4=/lib/firmware/BB-UART3-00A0.dtbo
+uboot_overlay_addr5=/lib/firmware/BB-UART4-00A0.dtbo
+```
+Make sure that the following line is uncommented (and all other instances of the same command are commented out):
+```
+uboot_overlay_pru=/lib/firmware/AM335X-PRU-UIO-00A0.dtbo
 ```
 
 # Expand partition to fill SD card
 
-The installed partition is only 4 GB; it needs to be expanded to fill the entire SD card before we start installed more stuff.
-
-* Open the disk for modification
+The installed partition is only 4 GB; it needs to be expanded to fill the entire SD card before we start installed more stuff. Luckily, there's a script:
 ```
-sudo fdisk -u /dev/mmcblk0
-```
-* Type ```p``` to print the partition table. Note the ```Start``` point of the main partition and the number of bytes on the disk. 
-* Type ```d``` to delete the old partition
-* Type ```n``` to create a new partition starting at the same point as the original partition. Accept the default end point, which will include the whole disk.
-* Type ```w``` to write the new partition and quit.
-* Reboot to pick up new partition table
-* Resize the filesystem to take advantage of the expanded partition
-```
-sudo resize2fs /dev/mmcblk0p1
+sudo /opt/scripts/tools/grow_partition.sh
 ```
 
-# Software Installation
+# Add swap 
+https://paulbupejr.com/adding-swap-memory-to-the-beaglebone-black/
 
-* Install gpsd and other important software
-```
-sudo apt-get install -y gpsd gpsd-clients cmake geographiclib-tools libgps-dev python3 
-sudo apt-get install -y python3-pip python3-geographiclib libcurl4-gnutls-dev libproj-dev
-sudo apt-get install -y libboost-all-dev gdb libgeographic-dev subversion xterm 
-sudo apt-get install -y libfltk1.3-dev freeglut3-dev libpng-dev libjpeg-dev libxft-dev 
-sudo apt-get install -y libxinerama-dev fluid libtiff5-dev 
-```
+# Software Installation 
 
-# Manual Library Installation
+First set up a new SSH key with the instructions here: https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent
 
-* Install rapidjson package
+Then clone the two repositories:
 ```
-git clone https://github.com/Tencent/rapidjson.git
-cd rapidjson
-cmake .
-make; sudo make install
-```
-* Install date package
-```
-git clone https://github.com/HowardHinnant/date.git
-cd date/include
-sudo cp -R date /usr/include
+git clone git@github.com:ProjectLadon/ardupilot.git ardupilot-ladon
+git clone git@github.com:ProjectLadon/Ladon-APM.git
+cd ardupilot-ladon
+git submodule init
+git submodule update
 ```
 
-# Installing & Building MOOS-IvP
-
-* Fetch the latest version of MOOS-Ivp
+Install a required python library:
 ```
-svn co https://oceanai.mit.edu/svn/moos-ivp-aro/releases/moos-ivp-17.7.2 moos-ivp
-```
-* Build the software
-```
-cd moos-ivp
-./build.sh
-./build-check.sh
-```
-* There's a bug in the build-check.sh script that causes it to miss the build of proj. Additionally, gzaicview and vzaicview do not compile, so they too will show as failed. 
-* Add /home/debian/moos-ivp/bin to your PATH variable in ~/.bashrc
-* Note that if you want to run on the BBBlue from a remote desktop with Cygwin/X, you need to start the server with the +iglx option and do the following on both your Cygwin/X session and the Beaglebone:
-```
-export LIBGL_ALWAYS_INDIRECT=1
+sudo apt-get install python-future -y
 ```
 
-# Setting up GPSd
+Follow the setup instructions in https://github.com/ProjectLadon/Ladon-APM
 
-* Assuming you are using the standard Beaglebone Blue GPS port, add the entry ```/dev/ttyO2``` to the DEVICES list in ```/etc/default/gpsd```.
-* Another entry will be added in the future for AIS
-* Reboot the beaglebone or restart the gpsd process to pick up the change
-
-# Installing magnetic model
-
-* Use the helper script to fetch and install the magnetic models
+Finally, build ardupilot with the following commands:
 ```
-geographiclib-get-magnetic all
+cd ~/ardupilot-ladon
+./waf configure --board=blue
+./waf build
 ```
+Note that this takes several hours to complete. It will fail if the swap has not been created. 
 
 # Other fixes
 Some Beaglebone Blues have 'funky' bootloader setups. These may cause some peripherals, such as ADC and PRUs, not to work properly. You can check this by running:
@@ -125,6 +94,3 @@ Check if there are multiple bootloader lines. If there are, run the following:
 ```
 sudo dd if=/dev/zero of=/dev/mmcblk1 bs=1M count=10 
 ```
-
-# Add swap 
-https://paulbupejr.com/adding-swap-memory-to-the-beaglebone-black/
