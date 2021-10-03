@@ -63,11 +63,8 @@ First set up a new SSH key with the instructions here: https://docs.github.com/e
 
 Then clone the two repositories:
 ```
-git clone git@github.com:ProjectLadon/ardupilot.git ardupilot-ladon
+git clone git@github.com:ProjectLadon/ardupilot.git ardupilot-ladon --recurse-submodules
 git clone git@github.com:ProjectLadon/Ladon-APM.git
-cd ardupilot-ladon
-git submodule init
-git submodule update
 ```
 
 Install a required python library:
