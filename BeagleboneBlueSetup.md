@@ -83,11 +83,11 @@ cd ~/ardupilot-ladon
 Note that this takes several hours to complete. It will fail if the swap has not been created. 
 
 # Other fixes
-Some Beaglebone Blues have 'funky' bootloader setups. These may cause some peripherals, such as ADC and PRUs, not to work properly. You can check this by running:
-```
-sudo /opt/scripts/tools/version.sh
-```
-Check if there are multiple bootloader lines. If there are, run the following:
+Run the following to blow away the bootloader (necessary for PWM)
 ```
 sudo dd if=/dev/zero of=/dev/mmcblk1 bs=1M count=10 
+```
+Create the log directory:
+```
+sudo mkdir -p /var/APM/logs
 ```
